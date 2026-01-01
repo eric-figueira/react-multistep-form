@@ -1,9 +1,9 @@
-import { Button } from "./components/ui/button";
+import { MultiStepForm } from "./components/multistep-form";
 
 export function App() {
   return (
-    <div>
-      <Button>Hello</Button>
+    <div className="h-screen flex items-center justify-center bg-slate-100">
+      <MultiStepForm />
     </div>
   )
 }
