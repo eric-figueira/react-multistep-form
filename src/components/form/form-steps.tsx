@@ -1,18 +1,18 @@
-import { useState, type ReactNode } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import { Button } from "../ui/button";
 import { ArrowLeft, ArrowRight, Send } from "lucide-react"
+import { useState, type ReactNode } from "react"
+import { Button } from "../ui/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs"
 
 export type FormStep = {
-  label: string;
-  value: string;
-  fields: string[];
-  Component: ReactNode;
-  hasError: boolean;
+  label: string
+  value: string
+  fields: string[]
+  Component: ReactNode
+  hasError: boolean
 }
 
 interface FormStepsProps {
-  items: FormStep[];
+  items: FormStep[]
 }
 
 export function FormSteps({ items }: FormStepsProps) {
@@ -23,6 +23,13 @@ export function FormSteps({ items }: FormStepsProps) {
 
   const isLastStep  = activeStep === items.length - 1
   const activeValue = items[activeStep].value
+
+  const handleTriggerSubmit = (e: React.MouseEvent) => {
+    const form = e.currentTarget.closest('form')
+    if (form) {
+      form.requestSubmit() 
+    }
+  }
 
   return (
     <div className="h-full flex flex-col p-10 rounded-md bg-slate-50 border border-slate-200">
@@ -70,7 +77,8 @@ export function FormSteps({ items }: FormStepsProps) {
           <Button 
             variant={"default"}
             size={"sm"} 
-            type="submit"
+            type="button"
+            onClick={handleTriggerSubmit}
           >
             Enviar
             <Send className="size-4" />
@@ -87,7 +95,6 @@ export function FormSteps({ items }: FormStepsProps) {
           </Button>
         )}
       </div>
-      
     </div>
   )
 }
