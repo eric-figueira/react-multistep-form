@@ -1,4 +1,4 @@
-import { FormStepInput } from "../form-step-input";
+import { FormStepInput } from "../form-step-input"
 
 export function AddressStep() {
   return (

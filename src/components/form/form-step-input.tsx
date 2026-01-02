@@ -1,13 +1,13 @@
-import { Controller, useFormContext } from "react-hook-form";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { cn } from "@/lib/utils"
+import { Controller, useFormContext } from "react-hook-form"
 
 interface FormStepInputProps {
-  name: string;
-  label: string;
-  placeholder?: string;
-  className?: string;
+  name: string,
+  label: string,
+  placeholder?: string,
+  className?: string,
 }
 
 export function FormStepInput({ name, label, placeholder, className }: FormStepInputProps) {

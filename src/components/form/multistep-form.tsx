@@ -4,8 +4,8 @@ import { PersonalStep } from "@/components/form/steps/personal"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { FormProvider, useForm } from "react-hook-form"
 import z from "zod"
-import { FormSteps, type FormStep } from "./form-steps"
 import { Button } from "../ui/button"
+import { FormSteps, type FormStep } from "./form-steps"
 
 const formSteps: FormStep[] = [
   {
