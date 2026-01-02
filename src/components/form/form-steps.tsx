@@ -1,12 +1,12 @@
 import { useState, type ReactNode } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { Label } from "./ui/label";
-import { Button } from "./ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import { Button } from "../ui/button";
 import { ArrowLeft, ArrowRight, Send } from "lucide-react"
 
 export type FormStep = {
   label: string;
   value: string;
+  fields: string[];
   Component: ReactNode;
   hasError: boolean;
 }
@@ -25,9 +25,9 @@ export function FormSteps({ items }: FormStepsProps) {
   const activeValue = items[activeStep].value
 
   return (
-    <div className="p-10 rounded-md bg-slate-50 border border-slate-200 space-y-4">
-      <Tabs value={activeValue} className="space-y-4">
-        <TabsList>
+    <div className="h-full flex flex-col p-10 rounded-md bg-slate-50 border border-slate-200">
+      <Tabs value={activeValue} className="h-full gap-12">
+        <TabsList className="w-full">
           {items.map(({ value, label, hasError }, index) => {
             return (
               <TabsTrigger
@@ -42,15 +42,18 @@ export function FormSteps({ items }: FormStepsProps) {
             )
           })}
         </TabsList>
-        {items.map(({ Component, value }) => {
-          return (
-            <TabsContent value={value}>
-              {Component}
-            </TabsContent>
-          )
-        })}
+        <div>
+          {items.map(({ Component, value }, index) => {
+            return (
+              <TabsContent value={value} key={index}>
+                {Component}
+              </TabsContent>
+            )
+          })}
+        </div>
+        
       </Tabs>
-      <div className="w-full flex justify-between">
+      <div className="flex justify-between">
         <Button 
           variant={"ghost"} 
           size={"sm"} 
@@ -84,6 +87,7 @@ export function FormSteps({ items }: FormStepsProps) {
           </Button>
         )}
       </div>
+      
     </div>
   )
 }

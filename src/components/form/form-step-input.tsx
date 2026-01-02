@@ -1,6 +1,6 @@
 import { Controller, useFormContext } from "react-hook-form";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 interface FormStepInputProps {
@@ -20,17 +20,17 @@ export function FormStepInput({ name, label, placeholder, className }: FormStepI
         name={name}
         control={control}
         render={({ field, fieldState }) => (
-          <div className="space-y-1">
+          <div>
             <Input
               placeholder={placeholder}
-              aria-invalid={fieldState.invalid}
+              aria-invalid={Boolean(fieldState.error)}
               {...field}
             />
 
             {fieldState.error && (
-              <p id="fullName-error" className="text-sm text-destructive">
+              <span id="fullName-error" className="text-xs text-destructive leading-0">
                 {fieldState.error.message}
-              </p>
+              </span>
             )}
           </div>
         )}

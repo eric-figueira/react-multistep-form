@@ -3,7 +3,7 @@ import { FormStepInput } from "../form-step-input";
 export function PersonalStep() {
   return (
     <div className="space-y-8">
-      <h2 className="text-2xl font-semibold">Dados pessoais</h2>
+      <h2 className="text-2xl font-semibold">Dados Pessoais</h2>
 
       <div className="space-y-4">
         <FormStepInput name="fullName" label="Nome completo" placeholder="John Doe" />
